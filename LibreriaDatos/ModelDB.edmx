@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ConsultasAEDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Asignatura">
+          <Key>
+            <PropertyRef Name="CodigoAsig" />
+          </Key>
+          <Property Name="CodigoAsig" Type="int" Nullable="false" />
+          <Property Name="NombreAsignatura" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="C_Registro">
+          <Key>
+            <PropertyRef Name="NumRegistro" />
+          </Key>
+          <Property Name="NumRegistro" Type="int" Nullable="false" />
+          <Property Name="NumSemana" Type="int" />
+          <Property Name="TipoConsulta" Type="nvarchar" MaxLength="10" />
+          <Property Name="TemaConsulta" Type="nvarchar" MaxLength="100" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="Hora" Type="time" Precision="7" />
+          <Property Name="Carnet" Type="int" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Docente">
+          <Key>
+            <PropertyRef Name="IdDocente" />
+          </Key>
+          <Property Name="IdDocente" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'ConsultasAED.dbo.DocenteAsignatura' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="DocenteAsignatura">
+          <Property Name="IdDocente" Type="int" />
+          <Property Name="CodigoAsig" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'ConsultasAED.dbo.DocenteGrupo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="DocenteGrupo">
+          <Property Name="IdGrupo" Type="int" />
+          <Property Name="IdDocente" Type="int" />
+        </EntityType>-->
+        <EntityType Name="Grupo">
+          <Key>
+            <PropertyRef Name="IdGrupo" />
+          </Key>
+          <Property Name="IdGrupo" Type="int" Nullable="false" />
+          <Property Name="NombreGrupo" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'ConsultasAED.dbo.RegistroGrupo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="RegistroGrupo">
+          <Property Name="IdGrupo" Type="int" />
+          <Property Name="NumRegistro" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+error 6004: The table 'ConsultasAED.dbo.DocenteAsignatura' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__DocenteAs__Codig__3C69FB99" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'ConsultasAED.dbo.DocenteAsignatura' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__DocenteAs__IdDoc__3B75D760" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'ConsultasAED.dbo.DocenteGrupo' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__DocenteGr__IdDoc__3F466844" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'ConsultasAED.dbo.DocenteGrupo' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__DocenteGr__IdGru__3E52440B" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'ConsultasAED.dbo.RegistroGrupo' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__RegistroG__IdGru__412EB0B6" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'ConsultasAED.dbo.RegistroGrupo' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__RegistroG__NumRe__4222D4EF" />-->
+        <EntityContainer Name="ConsultasAEDModelStoreContainer">
+          <EntitySet Name="Asignatura" EntityType="Self.Asignatura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C_Registro" EntityType="Self.C_Registro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Docente" EntityType="Self.Docente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grupo" EntityType="Self.Grupo" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ConsultasAEDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Asignatura">
+          <Key>
+            <PropertyRef Name="CodigoAsig" />
+          </Key>
+          <Property Name="CodigoAsig" Type="Int32" Nullable="false" />
+          <Property Name="NombreAsignatura" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="C_Registro">
+          <Key>
+            <PropertyRef Name="NumRegistro" />
+          </Key>
+          <Property Name="NumRegistro" Type="Int32" Nullable="false" />
+          <Property Name="NumSemana" Type="Int32" />
+          <Property Name="TipoConsulta" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TemaConsulta" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Hora" Type="Time" Precision="7" />
+          <Property Name="Carnet" Type="Int32" />
+          <Property Name="Observaciones" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Docente">
+          <Key>
+            <PropertyRef Name="IdDocente" />
+          </Key>
+          <Property Name="IdDocente" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Grupo">
+          <Key>
+            <PropertyRef Name="IdGrupo" />
+          </Key>
+          <Property Name="IdGrupo" Type="Int32" Nullable="false" />
+          <Property Name="NombreGrupo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="ConsultasAEDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Asignaturas" EntityType="Self.Asignatura" />
+          <EntitySet Name="C_Registro" EntityType="Self.C_Registro" />
+          <EntitySet Name="Docentes" EntityType="Self.Docente" />
+          <EntitySet Name="Grupoes" EntityType="Self.Grupo" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ConsultasAEDModelStoreContainer" CdmEntityContainer="ConsultasAEDEntities">
+          <EntitySetMapping Name="Asignaturas">
+            <EntityTypeMapping TypeName="ConsultasAEDModel.Asignatura">
+              <MappingFragment StoreEntitySet="Asignatura">
+                <ScalarProperty Name="CodigoAsig" ColumnName="CodigoAsig" />
+                <ScalarProperty Name="NombreAsignatura" ColumnName="NombreAsignatura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Registro">
+            <EntityTypeMapping TypeName="ConsultasAEDModel.C_Registro">
+              <MappingFragment StoreEntitySet="C_Registro">
+                <ScalarProperty Name="NumRegistro" ColumnName="NumRegistro" />
+                <ScalarProperty Name="NumSemana" ColumnName="NumSemana" />
+                <ScalarProperty Name="TipoConsulta" ColumnName="TipoConsulta" />
+                <ScalarProperty Name="TemaConsulta" ColumnName="TemaConsulta" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Carnet" ColumnName="Carnet" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Docentes">
+            <EntityTypeMapping TypeName="ConsultasAEDModel.Docente">
+              <MappingFragment StoreEntitySet="Docente">
+                <ScalarProperty Name="IdDocente" ColumnName="IdDocente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grupoes">
+            <EntityTypeMapping TypeName="ConsultasAEDModel.Grupo">
+              <MappingFragment StoreEntitySet="Grupo">
+                <ScalarProperty Name="IdGrupo" ColumnName="IdGrupo" />
+                <ScalarProperty Name="NombreGrupo" ColumnName="NombreGrupo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
